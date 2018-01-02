@@ -3,14 +3,12 @@ package assignment2;
 import org.geotools.geometry.jts.JTS;
 import org.geotools.geometry.jts.JTSFactoryFinder;
 import org.geotools.referencing.CRS;
-import org.opengis.geometry.Geometry;
 import org.opengis.referencing.FactoryException;
 import org.opengis.referencing.NoSuchAuthorityCodeException;
 import org.opengis.referencing.crs.CoordinateReferenceSystem;
 import org.opengis.referencing.operation.MathTransform;
 import org.opengis.referencing.operation.TransformException;
 import com.vividsolutions.jts.geom.Coordinate;
-import com.vividsolutions.jts.geom.Envelope;
 import com.vividsolutions.jts.geom.Point;
 
 public class CoordinatesTransformer {
@@ -49,7 +47,7 @@ public class CoordinatesTransformer {
 		
 		com.vividsolutions.jts.geom.GeometryFactory jtsGf = JTSFactoryFinder.getGeometryFactory();
 		
-		Point pointInWgs84 = (Point) jtsGf.createPoint(new Coordinate(47.788901, 13.060209));
+		Point pointInWgs84 = (Point) jtsGf.createPoint(new Coordinate(13.060209, 47.788901));
 		Point pointInUtm33n = (Point) JTS.transform(pointInWgs84, wgs84Toutm33n);
 		
 		System.out.println(pointInUtm33n);
