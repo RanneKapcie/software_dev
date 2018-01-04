@@ -32,9 +32,9 @@ public class CoordinatesTransformer {
 			e.printStackTrace();
 		}
 		
-		CoordinateReferenceSystem utm33 = null;
+		CoordinateReferenceSystem utm33n = null;
 		try {
-			utm33 = CRS.decode("EPSG:32633", true);
+			utm33n = CRS.decode("EPSG:32633", true);
 		} catch (NoSuchAuthorityCodeException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -47,9 +47,9 @@ public class CoordinatesTransformer {
 		 * ready short code that change source CRS into target CRS
 		 */
 		
-		MathTransform wgs84Toutm33n = null;
+		MathTransform wgs84ToUtm33n = null;
 		try {
-			wgs84Toutm33n = CRS.findMathTransform(wgs84, utm33);
+			wgs84ToUtm33n = CRS.findMathTransform(wgs84, utm33n);
 		} catch (FactoryException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -61,7 +61,7 @@ public class CoordinatesTransformer {
 		Point pointInWgs84 = (Point) jtsGf.createPoint(new Coordinate(13.060209, 47.788901));
 		
 		//transform point from original CRS into new one through created function wgs84Toutm33n
-		Point pointInUtm33n = (Point) JTS.transform(pointInWgs84, wgs84Toutm33n);
+		Point pointInUtm33n = (Point) JTS.transform(pointInWgs84, wgs84ToUtm33n);
 		
 		System.out.println(pointInUtm33n);
 	}//main
