@@ -16,7 +16,7 @@ public class CoordinatesTransformer {
 	public static void main (String[] args) throws TransformException {
 		
 		/* 
-		 * We used method from CRS class that return a Coordinate Reference System 
+		 * We used method from CRS class that returns a Coordinate Reference System 
 		 * for the specified code to created variable. That way we have defined CRS 
 		 * with name, that we need for transformation
 		*/
@@ -50,12 +50,13 @@ public class CoordinatesTransformer {
 			e.printStackTrace();
 		}
 		
+		//returns first geometry factory available on the classpath as a result
 		com.vividsolutions.jts.geom.GeometryFactory jtsGf = JTSFactoryFinder.getGeometryFactory();
 		
-		//create point with define variable from assignment
+		//creates point with coordinates defined in the assignment
 		Point pointInWgs84 = (Point) jtsGf.createPoint(new Coordinate(13.060209, 47.788901));
 		
-		//transform point from original CRS into new one through created function wgs84Toutm33n
+		//transforms point from original CRS into new one with function wgs84Toutm33n
 		Point pointInUtm33n = (Point) JTS.transform(pointInWgs84, wgs84ToUtm33n);
 		
 		System.out.println(pointInUtm33n);
