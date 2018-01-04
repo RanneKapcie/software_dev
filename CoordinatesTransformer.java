@@ -25,10 +25,8 @@ public class CoordinatesTransformer {
 		try {
 			wgs84 = CRS.decode("EPSG:4326", true);
 		} catch (NoSuchAuthorityCodeException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (FactoryException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -36,10 +34,8 @@ public class CoordinatesTransformer {
 		try {
 			utm33n = CRS.decode("EPSG:32633", true);
 		} catch (NoSuchAuthorityCodeException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (FactoryException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -51,7 +47,6 @@ public class CoordinatesTransformer {
 		try {
 			wgs84ToUtm33n = CRS.findMathTransform(wgs84, utm33n);
 		} catch (FactoryException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
